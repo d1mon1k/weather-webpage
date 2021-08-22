@@ -1,3 +1,7 @@
+//TODO add preloader
+//TODO add weather for the next day
+//TODO add beautiful animations
+
 const defaultCities = ['Moscow', 'London', 'Tokio', 'Pekin', 'New York', 'Paris'];
 const apiUrl = 'http://api.weatherapi.com/v1/forecast.json?'
 const apiKey = 'key=5050ce131d7f4d3ab69140830211708'
@@ -26,7 +30,7 @@ async function getWeatherJson(path, url = apiUrl, key = apiKey) {
   return data
 }
 
-function weatherCardTemplate(data) { //TODO Сделать деструктуризацию
+function weatherCardTemplate(data) {
   let {
     location: { name: city },
     current: { temp_c: temperature },
@@ -63,7 +67,7 @@ function weatherCardTemplate(data) { //TODO Сделать деструктур�
 // }
 
 
-renderCitiesWeather(defaultCities)
+// renderCitiesWeather(defaultCities)
 
 function onClickHandler(e) {
   // renderWeek(`&q=${this.firstChild.textContent}&days=3`)

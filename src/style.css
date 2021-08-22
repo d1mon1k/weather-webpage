@@ -408,38 +408,34 @@ a {
   margin: 0 0 10px 0;
 }
 
-.cards-container_weekday {
+.hours-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
-.card-weekday {
+.hours-list__item {
   display: flex;
   justify-content: space-around;
   align-items: center;
   max-width: 550px;
   width: 100%;
   padding: 2px;
-  margin: 0 auto 10px;
+  margin: 0 0 10px;
   border-radius: 5px;
   color: #fff;
   background-color: #363c75;
-  cursor: pointer;
-}
-.card-weekday:hover {
-  box-shadow: 0 0 15px #5179fa;
-  outline: 1px solid #5179fa;
 }
 
-.card-weekday__title {
+.hours-list__time {
   font-size: 20px;
   font-weight: 400;
   line-height: 20px;
   font-style: normal;
 }
 
-.card-weekday__image {
+.hours-list__image {
   background-image: url("/assets/weather/64x64/day/116.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -448,47 +444,37 @@ a {
   height: 44px;
 }
 
-.card-weekday__temperature {
+.hours-list__temperature {
   font-size: 20px;
   font-weight: 400;
   line-height: 20px;
   font-style: normal;
 }
 
-.card-particular {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.card-details {
+  width: 100%;
+}
+
+.card-details__table {
+  margin: 0 auto 10px;
   max-width: 550px;
   width: 100%;
-  padding: 10px;
-  margin: 0 auto 10px;
+  border-spacing: 13px;
   border-radius: 5px;
   color: #fff;
   background-color: #363c75;
-  cursor: pointer;
-}
-.card-particular:hover {
-  box-shadow: 0 0 15px #5179fa;
-  outline: 1px solid #5179fa;
 }
 
-.card-particular__add-info {
+.card-details__info {
   font-size: 14px;
   font-weight: normal;
   line-height: 15px;
   font-style: normal;
   color: #eeeeeec7;
   text-transform: uppercase;
-  padding: 0 30px 0 0;
 }
 
-.card-particular__table {
-  width: 100%;
-  border-spacing: 13px;
-}
-
-.ta-right {
+.card-details__text {
   text-align: right;
 }
 

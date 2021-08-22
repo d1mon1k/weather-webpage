@@ -1,32 +1,28 @@
-.cards-container_weekday {
+.hours-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
-.card-weekday {
+.hours-list__item {
   display: flex;
   justify-content: space-around;
   align-items: center;
   max-width: 550px;
   width: 100%;
   padding: 2px;
-  margin: 0 auto 10px;
+  margin: 0 0 10px;
   border-radius: 5px;
   color: $color-light;
   background-color: $color-bg-card;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0 15px $color-add;
-    outline: 1px solid $color-add;
-  }
 }
 
-.card-weekday__title {
+.hours-list__time {
   @include font(20px, 20px, 400);
 }
 
-.card-weekday__image {
+.hours-list__image {
   background-image: url("/assets/weather/64x64/day/116.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -35,6 +31,6 @@
   height: 44px;
 }
 
-.card-weekday__temperature {
+.hours-list__temperature {
   @include font(20px, 20px, 400);
 }

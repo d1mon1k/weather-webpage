@@ -1,0 +1,23 @@
+.card-details {
+  width: 100%;
+}
+
+.card-details__table {
+  margin: 0 auto 10px;
+  max-width: 550px;
+  width: 100%;
+  border-spacing: 13px;
+  border-radius: 5px;
+  color: $color-light;
+  background-color: $color-bg-card;
+}
+
+.card-details__info {
+  @include font(14px, 15px);
+  color: $color-blur;
+  text-transform: uppercase;
+}
+
+.card-details__text {
+  text-align: right;
+}
