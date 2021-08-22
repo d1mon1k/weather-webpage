@@ -32,87 +32,96 @@
   <!-- /.header -->
   <main class="main">
     <div class="wrapper main__wrapper">
-      <form class="main__form" name="city" action="#">
-        <input type="text" class="main__search" name="search" placeholder="Choose city and press Enter">
-      </form>
+      <section class="search">
+        <form class="search__form" name="submitCity" action="#">
+          <input type="text" class="search__input" name="search" placeholder="Choose city and press Enter">
+        </form>
+      </section>
+      <!-- /.search -->
+      <section class="main-content" id="main-container">
+        <ul id="list-container"></ul>
 
-      <div class="card-particular">
-        <table class="card-particular__table">
-          <tr>
-            <td class="card-particular__add-info">Country:</td>
-            <td class="ta-right">Belarus</td>
-          </tr>
-          <tr>
-            <td class="card-particular__add-info">City:</td>
-            <td class="ta-right">Minsk</td>
-          </tr>
-          <tr>
-            <td class="card-particular__add-info">Date:</td>
-            <td class="ta-right">2021-08-21</td>
-          </tr>
-          <tr>
-            <td class="card-particular__add-info">Temperature:</td>
-            <td class="ta-right">22&deg<span>13&deg</span></td>
-          </tr>
-          <tr>
-            <td class="card-particular__add-info">Daily chance of rain:</td>
-            <td class="ta-right">79%</td>
-          </tr>
-        </table>
-      </div>
+        <!-- <ul class="cards-container" id="list-container">
+          <li class="card">
+            <h3 class="card__title">Minsk</h3>
+            <div class="card__temperature">13&deg</div>
+            <div class="card__img"></div>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Minsk</h3>
+            <div class="card__temperature">13&deg</div>
+            <div class="card__img"></div>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Minsk</h3>
+            <div class="card__temperature">13&deg</div>
+            <div class="card__img"></div>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Minsk</h3>
+            <div class="card__temperature">13&deg</div>
+            <div class="card__img"></div>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Minsk</h3>
+            <div class="card__temperature">13&deg</div>
+            <div class="card__img"></div>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Minsk</h3>
+            <div class="card__temperature">13&deg</div>
+            <div class="card__img"></div>
+          </li>
+        </ul> -->
 
-      <ul class="cards-container cards-container_weekday" id="container">
-        <li class="card-weekday">
-          <time class="card-weekday__title">10:00</time>
-          <div class="card-weekday__image"></div>
-          <div class="card-weekday__temperature">22&deg</div>
-        </li>
-        <li class="card-weekday">
-          <time class="card-weekday__title">10:00</time>
-          <div class="card-weekday__image"></div>
-          <div class="card-weekday__temperature">22&deg</div>
-        </li>
-        <li class="card-weekday">
-          <time class="card-weekday__title">10:00</time>
-          <div class="card-weekday__image"></div>
-          <div class="card-weekday__temperature">22&deg</div>
-        </li>
+        <!-- <div class="card-particular">
+          <table class="card-particular__table">
+            <tr>
+              <td class="card-particular__add-info">Country:</td>
+              <td class="ta-right">Belarus</td>
+            </tr>
+            <tr>
+              <td class="card-particular__add-info">City:</td>
+              <td class="ta-right">Minsk</td>
+            </tr>
+            <tr>
+              <td class="card-particular__add-info">Date:</td>
+              <td class="ta-right">2021-08-21</td>
+            </tr>
+            <tr>
+              <td class="card-particular__add-info">Temperature:</td>
+              <td class="ta-right">22&deg<span>13&deg</span></td>
+            </tr>
+            <tr>
+              <td class="card-particular__add-info">Daily chance of rain:</td>
+              <td class="ta-right">79%</td>
+            </tr>
+          </table>
+        </div> -->
 
-        <!-- <li class="card">
-          <h3 class="card__title">Minsk</h3>
-          <div class="card__temperature">13&deg</div>
-          <div class="card__img"></div>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Minsk</h3>
-          <div class="card__temperature">13&deg</div>
-          <div class="card__img"></div>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Minsk</h3>
-          <div class="card__temperature">13&deg</div>
-          <div class="card__img"></div>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Minsk</h3>
-          <div class="card__temperature">13&deg</div>
-          <div class="card__img"></div>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Minsk</h3>
-          <div class="card__temperature">13&deg</div>
-          <div class="card__img"></div>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Minsk</h3>
-          <div class="card__temperature">13&deg</div>
-          <div class="card__img"></div>
-        </li> -->
-      </ul>
+        <!-- <ul class="cards-container_weekday" id="container-list">
+          <li class="card-weekday">
+            <time class="card-weekday__title">10:00</time>
+            <div class="card-weekday__image"></div>
+            <div class="card-weekday__temperature">22&deg</div>
+          </li>
+          <li class="card-weekday">
+            <time class="card-weekday__title">10:00</time>
+            <div class="card-weekday__image"></div>
+            <div class="card-weekday__temperature">22&deg</div>
+          </li>
+          <li class="card-weekday">
+            <time class="card-weekday__title">10:00</time>
+            <div class="card-weekday__image"></div>
+            <div class="card-weekday__temperature">22&deg</div>
+          </li>
+        </ul> -->
+      </section>
+      <!-- /.main-content -->
     </div>
+    <!-- /.wrapper -->
   </main>
   <!-- /.main -->
-
   <script src="src/js/app.js"></script>
 </body>
 

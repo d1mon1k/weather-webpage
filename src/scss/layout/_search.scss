@@ -1,0 +1,24 @@
+.search {
+  width: 100%;
+  padding: 70px 0 0;
+}
+.search__form {
+  margin: 0 auto 60px;
+  width: 70%;
+}
+.search__input {
+  padding: 15px 25px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: $color-light;
+  font-size: 18px;
+  background-color: $color-bg-header;
+  &::placeholder {
+    color: $color-blur;
+  }
+  &:focus {
+    outline: 1px solid $color-add;
+    box-shadow: 0 0 15px $color-add;
+  }
+}

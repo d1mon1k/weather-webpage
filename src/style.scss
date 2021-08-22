@@ -11,7 +11,7 @@
 @import "scss/base/reset";
 
 //components
-@import "scss/components/cards-grid";
+@import "scss/components/cards-cities";
 @import "scss/components/cards-days-grid";
 @import "scss/components/card-particular";
 
@@ -19,3 +19,5 @@
 @import "scss/layout/wrapper";
 @import "scss/layout/header";
 @import "scss/layout/main";
+@import "scss/layout/search";
+@import "scss/layout/main-content";

@@ -370,6 +370,12 @@ a {
   text-decoration: none;
 }
 
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  grid-gap: 20px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -541,23 +547,21 @@ a {
   color: #fff;
 }
 
-.main {
-  padding: 70px 0;
-}
-
 .main__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 900px;
 }
 
-.main__form {
-  margin: 0 0 60px 0;
+.search {
+  width: 100%;
+  padding: 70px 0 0;
+}
+
+.search__form {
+  margin: 0 auto 60px;
   width: 70%;
 }
 
-.main__search {
+.search__input {
   padding: 15px 25px;
   width: 100%;
   border: none;
@@ -566,10 +570,10 @@ a {
   font-size: 18px;
   background-color: #4a5190;
 }
-.main__search::placeholder {
+.search__input::placeholder {
   color: #eeeeeec7;
 }
-.main__search:focus {
+.search__input:focus {
   outline: 1px solid #5179fa;
   box-shadow: 0 0 15px #5179fa;
 }
