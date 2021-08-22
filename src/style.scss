@@ -1,0 +1,21 @@
+//TODO Посмотреть как работает блок search в news api (teg form)
+//vendors
+@import "scss/vendors/normalize";
+
+//abstracts
+@import "scss/abstracts/variables";
+@import "scss/abstracts/mixins";
+@import "scss/abstracts/placeholders";
+
+//base
+@import "scss/base/reset";
+
+//components
+@import "scss/components/cards-grid";
+@import "scss/components/cards-days-grid";
+@import "scss/components/card-particular";
+
+//layouts
+@import "scss/layout/wrapper";
+@import "scss/layout/header";
+@import "scss/layout/main";

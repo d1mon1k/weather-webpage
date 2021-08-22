@@ -1,0 +1,38 @@
+// .cards-container {
+//   display: grid;
+//   grid-template-columns: repeat(3, minmax(150px, 1fr));
+//   grid-gap: 20px;
+//   width: 100%;
+// }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+  color: $color-light;
+  background-color: $color-bg-card;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 15px $color-add;
+    outline: 1px solid $color-add;
+  }
+}
+
+.card__title {
+  @include font(20px, 20px, 400);
+  margin: 0 0 20px 0;
+}
+
+.card__temperature {
+  @include font(50px, 50px, 400);
+  margin: 0 0 10px 0;
+}
+
+.card__img {
+}
+
+.rendering {
+}

@@ -1,0 +1,51 @@
+.header {
+  padding: 15px 0;
+  background-color: $color-bg-header;
+}
+
+.header__wrapper {
+  display: grid;
+  grid-template-columns: minmax(auto, 31%) minmax(300px, 33.333%) minmax(auto, 33.333%);
+  grid-column-gap: 20px;
+  align-items: center;
+}
+
+.header__logo {
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  @include font(20px, 20px, 600);
+  color: $color-light;
+}
+
+.logo__img {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url("../../assets/weather/64x64/day/116.png");
+  background-size: cover;
+}
+
+.header__nav {
+}
+
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__item {
+}
+
+.header__link {
+  @include font(18px, 18px);
+  color: $color-blur;
+  &:hover {
+    color: $color-light;
+  }
+  &_active {
+    color: $color-light;
+  }
+}

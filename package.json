@@ -1,0 +1,14 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "d1mon1k",
+  "license": "MIT",
+  "devDependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.38.0"
+  },
+  "scripts": {
+    "style": "sass --watch src/style.scss src/style.css"
+  }
+}

@@ -1,0 +1,48 @@
+.card-particular {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 550px;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto 10px;
+  border-radius: 5px;
+  color: $color-light;
+  background-color: $color-bg-card;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 15px $color-add;
+    outline: 1px solid $color-add;
+  }
+}
+
+.card-particular__country {
+}
+
+.card-particular__city {
+}
+
+.card-particular__date {
+}
+
+.card-particular__temperature {
+}
+
+.card-particular__rain-chance {
+}
+
+.card-particular__add-info {
+  @include font(14px, 15px);
+  color: $color-blur;
+  text-transform: uppercase;
+  padding: 0 30px 0 0;
+}
+
+.card-particular__table {
+  width: 100%;
+  border-spacing: 13px;
+}
+
+.ta-right {
+  text-align: right;
+}

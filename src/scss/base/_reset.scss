@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+}
+
+body {
+  @include font(22px, 22px, 400);
+  @extend %font-primary;
+  background-color: $color-bg-main;
+}
+
+h3 {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
