@@ -436,7 +436,6 @@ a {
 }
 
 .hours-list__image {
-  background-image: url("/assets/weather/64x64/day/116.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -476,6 +475,9 @@ a {
 
 .card-details__text {
   text-align: right;
+}
+.card-details__text span {
+  color: #eeeeeec7;
 }
 
 .wrapper {
@@ -533,10 +535,6 @@ a {
   color: #fff;
 }
 
-.main__wrapper {
-  max-width: 900px;
-}
-
 .search {
   width: 100%;
   padding: 70px 0 0;
@@ -562,6 +560,10 @@ a {
 .search__input:focus {
   outline: 1px solid #5179fa;
   box-shadow: 0 0 15px #5179fa;
+}
+
+.main__wrapper {
+  max-width: 900px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -20,4 +20,7 @@
 
 .card-details__text {
   text-align: right;
+  & span {
+    color: $color-blur;
+  }
 }
