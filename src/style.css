@@ -355,6 +355,10 @@ body {
   background-color: #2e3566;
 }
 
+time {
+  display: inline-block;
+}
+
 h3 {
   margin: 0;
 }
@@ -410,22 +414,21 @@ a {
 
 .hours-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  border-radius: 5px;
+  background-color: #363c75;
 }
 
 .hours-list__item {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  max-width: 550px;
-  width: 100%;
-  padding: 2px;
-  margin: 0 0 10px;
-  border-radius: 5px;
+  flex-grow: 1;
+  min-height: 200px;
+  border-left: 1px solid #2e356641;
+  border-right: 1px solid #2e356641;
   color: #fff;
-  background-color: #363c75;
 }
 
 .hours-list__time {
@@ -435,12 +438,18 @@ a {
   font-style: normal;
 }
 
+sup {
+  display: inline-block;
+  font-size: 13px;
+  transform: translateX(-3px);
+}
+
 .hours-list__image {
+  width: 44px;
+  height: 44px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  width: 44px;
-  height: 44px;
 }
 
 .hours-list__temperature {
@@ -450,24 +459,83 @@ a {
   font-style: normal;
 }
 
-.card-details {
-  width: 100%;
+.weekdays-row {
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 17px;
+  font-style: normal;
 }
 
-.card-details__table {
-  margin: 0 auto 10px;
-  max-width: 550px;
+.weekday-card {
+  margin: 0 0 13px 0px;
+  padding: 13px;
   width: 100%;
-  border-spacing: 13px;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   color: #fff;
   background-color: #363c75;
 }
+.weekday-card_middle {
+  margin: 0 13px;
+}
+.weekday-card_side {
+  border-radius: 5px;
+}
+.weekday-card_side:hover {
+  outline: 1px solid #5179fa;
+  box-shadow: 0 0 15px #5179fa;
+  cursor: pointer;
+  user-select: none;
+}
 
-.card-details__info {
+.weekday-card__day {
+  display: block;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.weekday-card__row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weekday-card__time {
+  display: inline-block;
+  margin: 0 0 10px 0;
+}
+
+.weekday-card__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 2px;
   font-size: 14px;
   font-weight: normal;
-  line-height: 15px;
+  line-height: 14px;
+  font-style: normal;
+  background-color: #4a5190;
+}
+
+.weekday-card__temp {
+  margin: 0 0 2px 0;
+}
+
+.weekday-card__ico {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-details__info {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 12px;
   font-style: normal;
   color: #eeeeeec7;
   text-transform: uppercase;
@@ -501,6 +569,7 @@ a {
 .logo {
   display: flex;
   align-items: center;
+  min-width: 180px;
   font-size: 20px;
   font-weight: 600;
   line-height: 20px;
@@ -521,11 +590,14 @@ a {
   justify-content: space-between;
 }
 
-.header__link {
+.header__item {
   font-size: 18px;
   font-weight: normal;
   line-height: 18px;
   font-style: normal;
+}
+
+.header__link {
   color: #eeeeeec7;
 }
 .header__link:hover {
@@ -564,6 +636,15 @@ a {
 
 .main__wrapper {
   max-width: 900px;
+}
+
+.main-content__title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 26px;
+  font-style: normal;
+  margin: 0 0 30px 0;
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

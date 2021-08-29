@@ -16,6 +16,7 @@
 .logo {
   display: flex;
   align-items: center;
+  min-width: 180px;
   @include font(20px, 20px, 600);
   color: $color-light;
 }
@@ -37,10 +38,10 @@
 }
 
 .header__item {
+  @include font(18px, 18px);
 }
 
 .header__link {
-  @include font(18px, 18px);
   color: $color-blur;
   &:hover {
     color: $color-light;

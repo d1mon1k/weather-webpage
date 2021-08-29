@@ -1,33 +1,38 @@
 .hours-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  border-radius: 5px;
+  background-color: $color-bg-card;
 }
 
 .hours-list__item {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  max-width: 550px;
-  width: 100%;
-  padding: 2px;
-  margin: 0 0 10px;
-  border-radius: 5px;
+  flex-grow: 1;
+  min-height: 200px;
+  border-left: 1px solid $color-border;
+  border-right: 1px solid $color-border;
   color: $color-light;
-  background-color: $color-bg-card;
 }
 
 .hours-list__time {
   @include font(20px, 20px, 400);
 }
 
+sup {
+  display: inline-block;
+  font-size: 13px;
+  transform: translateX(-3px);
+}
+
 .hours-list__image {
+  width: 44px;
+  height: 44px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  width: 44px;
-  height: 44px;
 }
 
 .hours-list__temperature {

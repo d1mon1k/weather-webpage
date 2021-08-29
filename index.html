@@ -39,10 +39,12 @@
       </section>
       <!-- /.search -->
       <section class="main-content" id="main-container">
+        <h2 class="main-content__title">Weather <span>in United States of America</span> on <span>31 august</span></h2>
         <ul id="cities-container"></ul>
+        <div id="weekdays-container"></div>
         <ul class="hours-list" id="hours-container"></ul>
 
-        <!-- <ul class="cards-container">
+        <!--* <ul class="cards-container">
           <li class="card">
             <h3 class="card__title">Minsk</h3>
             <div class="card__temperature">13&deg</div>
@@ -74,12 +76,59 @@
             <div class="card__img"></div>
           </li>
         </ul> -->
-        <!-- 
-        <div class="card-details">
-          <table class="card-details__table">
+
+        <!--* <div class="weekdays-row">
+          <div class="weekday-card weekday-card_side">
+            <div class="weekday-card__day">Now</div>
+            <div class="weekday-card__row">
+              <div class="weekday-card__info">
+                <time class="weekday-card__time">17:00</time>
+                <div class="weekday-card__col">
+                  <div class="weekday-card__temp">23&deg</div>
+                  <div class="weekday-card__feel-temp">Feels like 29&deg</div>
+                </div>
+              </div>
+              <span class="weekday-card__ico"
+                style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')">
+              </span>
+            </div>
+          </div>
+          <div class="weekday-card weekday-card_middle">
+            <time class="weekday-card__day">Sunday</time>
+            <div class="weekday-card__row">
+              <div class="weekday-card__info">
+                <time class="weekday-card__time">22-08-2021</time>
+                <div class="weekday-card__col">
+                  <div class="weekday-card__temp">max 20&deg</div>
+                  <div class="weekday-card__temp">min 18&deg</div>
+                </div>
+              </div>
+              <span class="weekday-card__ico"
+                style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')">
+              </span>
+            </div>
+          </div>
+          <div class="weekday-card weekday-card_side">
+            <time class="weekday-card__day">Monday</time>
+            <div class="weekday-card__row">
+              <div class="weekday-card__info">
+                <time class="weekday-card__time">23-08-2021</time>
+                <div class="weekday-card__col">
+                  <div class="weekday-card__temp">max 23&deg</div>
+                  <div class="weekday-card__temp">min 13&deg</div>
+                </div>
+              </div>
+              <span class="weekday-card__ico"
+                style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/179.png')">
+              </span>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <table class="card-details__table">
             <tr>
               <td class="card-details__info">Country:</td>
-              <td class="card-details__text">Belarus</td>
+              <td class="card-details__text">United States of America</td>
             </tr>
             <tr>
               <td class="card-details__info">City:</td>
@@ -97,24 +146,113 @@
               <td class="card-details__info">Daily chance of rain:</td>
               <td class="card-details__text">79%</td>
             </tr>
-          </table>
-        </div>
+          </table> -->
 
-        <ul class="hours-list">
+        <!--* <ul class="hours-list">
           <li class="hours-list__item">
-            <time class="hours-list__time">10:00</time>
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style=" background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
             <div class="hours-list__image"
               style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
             <div class="hours-list__temperature">22&deg</div>
           </li>
           <li class="hours-list__item">
-            <time class="hours-list__time">10:00</time>
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
             <div class="hours-list__image"
               style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
             <div class="hours-list__temperature">22&deg</div>
           </li>
           <li class="hours-list__item">
-            <time class="hours-list__time">10:00</time>
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
+            <div class="hours-list__image"
+              style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
+            <div class="hours-list__temperature">22&deg</div>
+          </li>
+          <li class="hours-list__item">
+            <time class="hours-list__time">
+              <span>10</span>
+              <sup>00</sup>
+            </time>
             <div class="hours-list__image"
               style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')"></div>
             <div class="hours-list__temperature">22&deg</div>
