@@ -66,39 +66,66 @@ async function renderHoursSection(path, url = apiUrl, key = apiKey) {
 
   weekdaysContainer.insertAdjacentHTML('beforeend', cardDetailsTemplate(data))
   const clock = document.querySelector('#clock')
-  getClock(clock)
+  const timeZone = clock.dataset.zone
+  getClock(clock, timeZone)
 
   for (let i = 0; i < hours.length; i += 2) {
     hoursContainer.insertAdjacentHTML('beforeend', hoursCardTemplate(hours[i]))
   }
 }
 
-function cardDetailsTemplate(data) {
+function cardDetailsTemplate(data) { //TODO rename function
+  console.log(data)
+  let feelsLike, temp, img, imgDescription
+
   const {
+    location: { tz_id: timeZone },
     location: { name: city },
     location: { country },
-    forecast: { forecastday: [day0] }
+    location: { localtime },
+    forecast: { forecastday: [day0, day1, day2] }
   } = data
+
+  function getExactDay() {
+
+  }
+
   const {
     date,
     day: { maxtemp_c },
     day: { mintemp_c },
-    day: { daily_chance_of_rain }
+    day: { daily_chance_of_rain },
+    hour: hours,
   } = day0
+
+  for (let hour of hours) { //TODO refactor?
+    const {
+      time,
+      feelslike_c,
+      temp_c,
+      condition: { icon },
+      condition: { text }
+    } = hour
+    if (Number(localtime.substr(-5, 2)) === Number(time.substr(-5, 2))) { //TODO add new function for strings
+      feelsLike = feelslike_c
+      temp = temp_c
+      img = icon
+      imgDescription = text
+    }
+  }
 
   return `<div class="weekdays-row">
             <div class="weekday-card weekday-card_side">
               <div class="weekday-card__day">Now</div>
               <div class="weekday-card__row">
                 <div class="weekday-card__info">
-                  <time class="weekday-card__time" id="clock"></time>
+                  <time class="weekday-card__time" id="clock" data-zone="${timeZone}"></time>
                   <div class="weekday-card__col">
-                    <div class="weekday-card__temp">23&deg</div>
-                    <div class="weekday-card__feel-temp">Feels like 29&deg</div>
+                    <div class="weekday-card__temp">${getWholeNum(temp)}&deg</div>
+                    <div class="weekday-card__feel-temp">Feels like ${getWholeNum(feelsLike)}&deg</div>
                   </div>
                 </div>
-                <span class="weekday-card__ico"
-                  style="background-image: url('https://cdn.weatherapi.com/weather/64x64/day/176.png')">
+                <span class="weekday-card__ico" title="${imgDescription}" style="background-image: url('${img}')">
                 </span>
               </div>
             </div>
@@ -160,17 +187,16 @@ function cardDetailsTemplate(data) {
         </div > `
 }
 
-function hoursCardTemplate(data) {
+function hoursCardTemplate(data) { //TODO add new function for strings
   const {
     time,
     condition: { icon },
     condition: { text: textIcon },
     temp_c: temperature,
   } = data
-  console.log(data)
   return `<li class="hours-list__item">
             <time class="hours-list__time">
-              <span>${time.substr(-5, 2)}</span>
+              <span>${time.substr(-5, 2)}</span> 
               <sup>00</sup>
             </time>
             <div class="hours-list__image" title="${textIcon}" style="background-image: url('${icon}')"></div>
@@ -182,21 +208,22 @@ function getWholeNum(digit) {
   return Math.round(Number(digit))
 }
 
-function getClock(elem) {
+function getClock(elem, city) {
   let date = new Date()
-  let seconds = date.getSeconds().toString().length < 2 ? `0${date.getSeconds()}` : date.getSeconds()
-  let minutes = date.getMinutes().toString().length < 2 ? `0${date.getMinutes()}` : date.getMinutes()
-  let hour = date.getHours().toString().length < 2 ? `0${date.getHours()}` : date.getHours()
-  elem.textContent = hour + ' ' + minutes + ' ' + seconds
-  console.log(elem)
-  setTimeout(() => { getClock(elem) }, 1000)
+  elem.textContent = date.toLocaleTimeString('en-US', { hour12: false, timeZone: city })
+  setTimeout(() => { getClock(elem, city) }, 1000)
+  // let seconds = date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds()
+  // let minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes()
+  // let hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
+  // elem.textContent = hour + ':' + minutes + ':' + seconds
+  // elem.textContent = date.substr(-12, 8)
 }
 
 renderCitiesWeather(defaultCities)
 
-// getClock()
-
-
+// let clock = document.createElement('div')
+// document.body.append(clock)
+// getClock(clock, 'America/New_York')
 
 
 
