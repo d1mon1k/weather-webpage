@@ -52,20 +52,20 @@ function weatherCardTemplate(data) {
 }
 
 function onClickHandler(e) {
-  renderCityPage(`&q=${this.dataset.city}&days=3`,)
+  renderCityPage(`&q=${this.dataset.city}&days=3`)
 }
 
 async function renderCityPage(path, dayNumber = 0) {
   const data = await getWeatherJson(path)
-  const { forecast: { forecastday } } = data
   citiesContainer.innerHTML = ''
   renderWeekdaysSection(dayNumber, data, path)
-  renderHoursSection(forecastday[dayNumber])
+  renderHoursSection(dayNumber, data)
   // backArrowTemplate()
 }
 
-function renderHoursSection(dayData) {
-  const { hour: hours } = dayData
+function renderHoursSection(dayNumber, data) {
+  const { forecast: { forecastday } } = data
+  const { hour: hours } = forecastday[dayNumber]
 
   for (let i = 0; i < hours.length; i += 2) {
     hoursContainer.insertAdjacentHTML('beforeend', hoursCardTemplate(hours[i]))
@@ -92,66 +92,9 @@ function hoursCardTemplate(HourData) {
 
 function renderWeekdaysSection(dayNumber, fullData, path) {
   weekdaysContainer.append(weekdaysCardsTemplate(dayNumber, fullData, path))
-  const clock = document.querySelector('#clock')
+  const clock = document.querySelector('#clock') //TODO не уместный код в данной функцииц
   const timeZone = clock.dataset.zone
   getClock(clock, timeZone)
-}
-
-function firstWeekday(forecastday, dayNumber) {
-  const { date, maxtemp, mintemp, icon, text } = getExactDay(forecastday, dayNumber)
-  console.log(forecastday[dayNumber])
-
-  const weekdayCardBody = `<time class="weekday-card__day">${getDayFromDate(date)}</time>
-            <div class="weekday-card__row">
-              <div class="weekday-card__info">
-                <time class="weekday-card__time">${date}</time>
-                <div class="weekday-card__col">
-                  <div class="weekday-card__temp">max ${getWholeNum(maxtemp)}&deg</div>
-                  <div class="weekday-card__temp">min ${getWholeNum(mintemp)}&deg</div>
-                </div>
-              </div>
-              <span class="weekday-card__ico" title="${text}"
-                style="background-image: url('${icon}')">
-              </span>
-            </div>`
-
-  const weekdayCard = document.createElement('div')
-  weekdayCard.classList.add('weekday-card', 'weekday-card_middle')
-  weekdayCard.dataset.dayNumber = dayNumber
-  weekdayCard.insertAdjacentHTML('afterbegin', weekdayCardBody)
-
-  return weekdayCard
-}
-
-function secondWeekday(forecastday, dayNumber, path) {
-  const { date, maxtemp, mintemp, icon, text } = getExactDay(forecastday, dayNumber + 1)
-  console.log(forecastday[dayNumber + 1])
-
-  const weekdayCardBody = `<time class="weekday-card__day">${getDayFromDate(date)}</time>
-                          <div class="weekday-card__row">
-                            <div class="weekday-card__info">
-                              <time class="weekday-card__time">${date}</time>
-                              <div class="weekday-card__col">
-                                <div class="weekday-card__temp">max ${getWholeNum(maxtemp)}&deg</div>
-                                <div class="weekday-card__temp">min ${getWholeNum(mintemp)}&deg</div>
-                              </div>
-                            </div>
-                            <span class="weekday-card__ico" title="${text}"
-                              style="background-image: url('${icon}')">
-                            </span>
-                          </div>`
-
-  const weekdayCard = document.createElement('div')
-  weekdayCard.classList.add('weekday-card', 'weekday-card_side')
-  weekdayCard.dataset.dayNumber = dayNumber + 1
-  weekdayCard.insertAdjacentHTML('afterbegin', weekdayCardBody)
-  weekdayCard.addEventListener('click', () => {
-    weekdaysContainer.innerHTML = ''
-    hoursContainer.innerHTML = ''
-    renderCityPage(path, dayNumber + 1)
-  })
-
-  return weekdayCard
 }
 
 function weekdaysCardsTemplate(dayNumber, fullData, path) {
@@ -161,6 +104,52 @@ function weekdaysCardsTemplate(dayNumber, fullData, path) {
     forecast: { forecastday }
   } = fullData
 
+  // const { hour: hours } = forecastday[0]
+  // let feelsLike, temp, img, imgDescription
+
+  // for (let hour of hours) { //TODO refactor/ объединить такой же блок в render hours
+  //   const {
+  //     time,
+  //     feelslike_c,
+  //     temp_c,
+  //     condition: { icon },
+  //     condition: { text }
+  //   } = hour
+
+  //   if (getHourFromDate(localtime, 'toNum') === getHourFromDate(time, 'toNum')) {
+  //     feelsLike = feelslike_c
+  //     temp = temp_c
+  //     img = icon
+  //     imgDescription = text
+  //   }
+  // }
+
+  // const weekdayCard = `<div class="weekday-card weekday-card_side">
+  //                       <div class="weekday-card__day">Now</div>
+  //                       <div class="weekday-card__row">
+  //                         <div class="weekday-card__info">
+  //                           <time class="weekday-card__time" id="clock" data-zone="${timeZone}"></time>
+  //                           <div class="weekday-card__col">
+  //                             <div class="weekday-card__temp">${getWholeNum(temp)}&deg</div>
+  //                             <div class="weekday-card__feel-temp">Feels like ${getWholeNum(feelsLike)}&deg</div>
+  //                           </div>
+  //                         </div>
+  //                         <span class="weekday-card__ico" title="${imgDescription}" style="background-image: url('${img}')">
+  //                         </span>
+  //                       </div>
+  //                     </div>`
+
+  const weekdaysRow = document.createElement('div')
+  weekdaysRow.classList.add('weekdays-row')
+  weekdaysRow.insertAdjacentHTML('afterbegin', weekdayCard)
+  weekdaysRow.append(firstWeekdayTemplate(forecastday, dayNumber, path))
+  weekdaysRow.append(secondWeekdayTemplate(forecastday, dayNumber, path))
+
+  return weekdaysRow
+}
+
+function currentWeatherCardTemplate(data, path) {
+  const { forecastday, localtime, timeZone } = data
   const { hour: hours } = forecastday[0]
   let feelsLike, temp, img, imgDescription
 
@@ -181,28 +170,83 @@ function weekdaysCardsTemplate(dayNumber, fullData, path) {
     }
   }
 
-  const weekdayCard = `<div class="weekday-card weekday-card_side">
-                        <div class="weekday-card__day">Now</div>
-                        <div class="weekday-card__row">
-                          <div class="weekday-card__info">
-                            <time class="weekday-card__time" id="clock" data-zone="${timeZone}"></time>
-                            <div class="weekday-card__col">
-                              <div class="weekday-card__temp">${getWholeNum(temp)}&deg</div>
-                              <div class="weekday-card__feel-temp">Feels like ${getWholeNum(feelsLike)}&deg</div>
+  const weekDayCardBody = `<div class="weekday-card weekday-card_side">
+            <div class="weekday-card__day">Now</div>
+            <div class="weekday-card__row">
+              <div class="weekday-card__info">
+                <time class="weekday-card__time" id="clock" data-zone="${timeZone}"></time>
+                <div class="weekday-card__col">
+                  <div class="weekday-card__temp">${getWholeNum(temp)}&deg</div>
+                  <div class="weekday-card__feel-temp">Feels like ${getWholeNum(feelsLike)}&deg</div>
+                </div>
+              </div>
+              <span class="weekday-card__ico" title="${imgDescription}" style="background-image: url('${img}')">
+              </span>
+            </div>
+          </div>`
+
+  const weekdayCard = document.createElement('div')
+  weekdayCard.classList.add('weekday-card', 'weekday-card_side')
+  weekdayCard.insertAdjacentHTML('beforeend', weekdayCardBody)
+
+  return weekdayCard
+}
+
+function firstWeekdayTemplate(forecastday, dayNumber) {
+  const { date, maxtemp, mintemp, icon, text } = getExactDay(forecastday, dayNumber)
+
+  const weekdayCardBody = `<time class="weekday-card__day">${getDayFromDate(date)}</time>
+                          <div class="weekday-card__row">
+                            <div class="weekday-card__info">
+                              <time class="weekday-card__time">${date}</time>
+                              <div class="weekday-card__col">
+                                <div class="weekday-card__temp">max ${getWholeNum(maxtemp)}&deg</div>
+                                <div class="weekday-card__temp">min ${getWholeNum(mintemp)}&deg</div>
+                              </div>
                             </div>
-                          </div>
-                          <span class="weekday-card__ico" title="${imgDescription}" style="background-image: url('${img}')">
-                          </span>
-                        </div>
-                      </div>`
+                            <span class="weekday-card__ico" title="${text}"
+                              style="background-image: url('${icon}')">
+                            </span>
+                          </div>`
 
-  const weekdaysRow = document.createElement('div')
-  weekdaysRow.classList.add('weekdays-row')
-  weekdaysRow.insertAdjacentHTML('afterbegin', weekdayCard)
-  weekdaysRow.append(firstWeekday(forecastday, dayNumber, path))
-  weekdaysRow.append(secondWeekday(forecastday, dayNumber, path))
+  const weekdayCard = document.createElement('div')
+  weekdayCard.classList.add('weekday-card', 'weekday-card_middle')
+  weekdayCard.insertAdjacentHTML('afterbegin', weekdayCardBody)
+  //? weekdayCard.dataset.dayNumber = dayNumber
 
-  return weekdaysRow
+  return weekdayCard
+}
+
+function secondWeekdayTemplate(forecastday, dayNumber, path) {
+  dayNumber = dayNumber < 2 ? dayNumber + 1 : 0
+  const { date, maxtemp, mintemp, icon, text } = getExactDay(forecastday, dayNumber)
+
+  const weekdayCardBody = `<time class="weekday-card__day">${getDayFromDate(date)}</time>
+                          <div class="weekday-card__row">
+                            <div class="weekday-card__info">
+                              <time class="weekday-card__time">${date}</time>
+                              <div class="weekday-card__col">
+                                <div class="weekday-card__temp">max ${getWholeNum(maxtemp)}&deg</div>
+                                <div class="weekday-card__temp">min ${getWholeNum(mintemp)}&deg</div>
+                              </div>
+                            </div>
+                            <span class="weekday-card__ico" title="${text}"
+                              style="background-image: url('${icon}')">
+                            </span>
+                          </div>`
+
+  const weekdayCard = document.createElement('div')
+  weekdayCard.classList.add('weekday-card', 'weekday-card_side')
+  weekdayCard.insertAdjacentHTML('afterbegin', weekdayCardBody)
+  //? weekdayCard.dataset.dayNumber = dayNumber
+
+  weekdayCard.addEventListener('click', () => {
+    weekdaysContainer.innerHTML = ''
+    hoursContainer.innerHTML = ''
+    renderCityPage(path, dayNumber)
+  })
+
+  return weekdayCard
 }
 
 function getExactDay(forecastday, dayNumber) {
@@ -220,7 +264,7 @@ function getWholeNum(digit) {
   return Math.round(Number(digit))
 }
 
-function getClock(elem, city) {
+function getClock(elem, city) { //TODO протестировать регионы со временем после полуночи (24:00)
   let date = new Date()
   elem.textContent = date.toLocaleTimeString('en-US', { hour12: false, timeZone: city })
   setTimeout(() => { getClock(elem, city) }, 1000)
