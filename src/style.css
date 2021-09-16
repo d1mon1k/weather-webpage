@@ -413,6 +413,7 @@ a {
 }
 
 .hours-list {
+  margin: 0 0 10px 0;
   display: flex;
   width: 100%;
   border-radius: 5px;
@@ -548,6 +549,46 @@ sup {
   color: #eeeeeec7;
 }
 
+.back-arrow {
+  background-image: url(/assets/svg/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.autocompleate {
+  display: none;
+  position: absolute;
+  top: 59px;
+  padding: 7px 0;
+  min-width: 270px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 15px;
+  font-style: normal;
+  color: #fff;
+  background-color: #4a5190;
+  box-shadow: 1px 2px 5px #000;
+}
+
+.autocompleate__item {
+  padding: 5px;
+  cursor: pointer;
+}
+.autocompleate__item:hover {
+  color: #4a5190;
+  font-weight: 600;
+  background-color: #fff;
+}
+
+.autocompleate__link {
+  display: block;
+}
+
 .wrapper {
   margin: 0 auto;
   padding: 0 15px;
@@ -613,6 +654,7 @@ sup {
 }
 
 .search__form {
+  position: relative;
   margin: 0 auto 60px;
   width: 70%;
 }

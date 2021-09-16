@@ -1,0 +1,29 @@
+.search__autocompleate {
+}
+
+.autocompleate {
+  display: none;
+  position: absolute;
+  top: 59px;
+  padding: 7px 0;
+  min-width: 270px;
+  border-radius: 5px;
+  @include font(14px, 15px);
+  color: $color-light;
+  background-color: $color-bg-header;
+  box-shadow: 1px 2px 5px #000;
+}
+
+.autocompleate__item {
+  padding: 5px;
+  &:hover {
+    color: $color-bg-header;
+    font-weight: 600;
+    background-color: $color-light;
+  }
+  cursor: pointer;
+}
+
+.autocompleate__link {
+  display: block;
+}
