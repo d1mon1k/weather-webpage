@@ -30,7 +30,7 @@ const mainContainer = document.querySelector("#main-container"); //!
 // const hoursContainer = document.querySelector("#hours-container"); //!
 
 document.addEventListener("scroll", function () {
-  if (window.pageYOffset >= window.screen.height / 3) {
+  if (window.pageYOffset >= 100) {
     fixedBtn.classList.add("fixed-btn");
   } else {
     fixedBtn.classList.remove("fixed-btn");
