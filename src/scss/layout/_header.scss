@@ -5,7 +5,10 @@
 
 .header__wrapper {
   display: grid;
-  grid-template-columns: minmax(auto, 31%) minmax(300px, 33.333%) minmax(auto, 33.333%);
+  grid-template-columns: minmax(180px, 31%) minmax(300px, 33.333%) minmax(
+      auto,
+      33.333%
+    );
   grid-column-gap: 20px;
   align-items: center;
 }
@@ -14,7 +17,7 @@
 }
 
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   min-width: 180px;
   @include font(20px, 20px, 600);
@@ -48,5 +51,29 @@
   }
   &_active {
     color: $color-light;
+  }
+}
+
+@media screen and (max-width: $tablet-width) {
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .header__menu-burger {
+    cursor: pointer;
+    & div:nth-child(1n) {
+      margin: 0 0 6px 0;
+      width: 25px;
+      height: 3px;
+      background-color: $color-add;
+    }
+    & div:last-child {
+      margin: 0;
+    }
   }
 }

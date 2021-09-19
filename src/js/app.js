@@ -1,6 +1,7 @@
 //TODO add preloader
 //TODO add beautiful animations
 //TODO[css] fix logo width
+//todo[css] menu-burger animation
 
 const defaultCities = [
   "Moscow",
@@ -17,7 +18,7 @@ const url = "http://api.weatherapi.com/v1/";
 const apiMethod = "forecast.json?";
 const apiKey = "key=5050ce131d7f4d3ab69140830211708";
 //TODO ==============================================================================
-
+const fixedBtn = document.querySelector("#fixed-btn");
 const logo = document.querySelector(".logo");
 const form = document.forms.submitCity;
 const search = form.elements["search"];
@@ -27,6 +28,14 @@ const mainContainer = document.querySelector("#main-container");
 const citiesContainer = document.querySelector("#cities-container");
 const weekdaysContainer = document.querySelector("#weekdays-container");
 const hoursContainer = document.querySelector("#hours-container");
+
+document.addEventListener("scroll", function () {
+  if (window.pageYOffset >= window.screen.height / 2) {
+    fixedBtn.classList.add("fixed-btn");
+  } else {
+    fixedBtn.classList.remove("fixed-btn");
+  }
+});
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -91,8 +100,6 @@ function autocompleateItemTemplate(data, numberOfCity) {
   autocompleateLink.setAttribute("href", "#");
   autocompleateLink.innerHTML = `${selectText(data[numberOfCity].name)}`;
 
-  // selectText(data[numberOfCity].name); //!!!
-
   const autocompleateItem = document.createElement("li");
   autocompleateItem.classList.add("autocompleate__item");
   autocompleateItem.append(autocompleateLink);
@@ -107,7 +114,6 @@ function autocompleateItemTemplate(data, numberOfCity) {
   return autocompleateItem;
 }
 
-//! ================================================================
 function selectText(line) {
   const regex = new RegExp(`${search.value}`, "i");
 
@@ -115,49 +121,6 @@ function selectText(line) {
     return `<b style="color: pink;">${searchStr}</b>`;
   });
 }
-
-// function selectText(line) {
-//   console.log('line', line)
-//   let wordsArray = line.split(", ");
-//   console.log("fetch", wordsArray);
-//   let searchValue = search.value;
-//   let lettersNum = search.value.length;
-//   let result = "";
-
-//   for (let i = 0; i < wordsArray.length; i++) {
-//     result += `${foo(wordsArray[i], searchValue)}, `;
-//   }
-
-//   return result;
-// }
-
-// function foo(str, searchStr) {
-//   let result = "";
-//   const wordsArr = str.split(" ");
-
-//   for (let i = 0; i < wordsArr.length; i++) {
-//     if (wordsArr[i].indexOf(searchStr) >= 0) {
-//       let a = wordsArr[i].indexOf(searchStr);
-
-//       let selText = wordsArr[i].substr(a, searchStr.length);
-//       let text = wordsArr[i].slice(searchStr.length);
-
-//       result += `<b style="color: pink;">${selText}</b>${text} `;
-//     } else {
-//       result += `${wordsArr[i]} `;
-//     }
-//   }
-
-//   return result;
-// }
-//*=======================================================
-// function onClickOnAutocompleate(e) {
-//   e.preventDefault();
-//   renderCityPage(`&q=${data[i].name}&days=3`);
-//   search.value = "";
-//   autocompleateBlock.style.display = "none";
-// }
-//! ================================================================
 
 async function renderCitiesWeather(citiesArr) {
   weekdaysContainer.innerHTML = "";
@@ -507,34 +470,4 @@ logo.addEventListener("click", renderCitiesWeatherOnClick);
 
 renderCitiesWeather(defaultCities);
 
-//====================================================================
-// let obj = {
-//   name: 'Artyom',
-//   foo: {
-//     bar: {
-//       fus: 'ra dah!!!'
-//     }
-//   },
-//   surname: 'Ostrovskiy',
-//   age: 23,
-// }
-
-// let { foo: { bar: { fus } }, foo } = obj
-// fus //?
-
-// container.addEventListener('transitionend', function (e) {
-//   console.log(e.propertyName)
-// })
-
-//======================================== Ajax
-// `${ apiUrl } ${ apiKey } ${ path } `
-
-// let xhr = new XMLHttpRequest()
-// xhr.open('GET', apiUrl)
-
-// xhr.addEventListener('load', () => {
-//   let response = JSON.parse(xhr.responseText)
-//   console.log(response)
-// })
-
-// xhr.send()
+// renderCityPage(`&q=London&days=3`);

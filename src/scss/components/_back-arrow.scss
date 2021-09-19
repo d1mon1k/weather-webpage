@@ -1,9 +1,25 @@
 .back-arrow {
+  grid-row-start: 2;
+  width: 30px;
+  height: 20px;
   background-image: url(/assets/svg/arrow-left.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 30px;
-  height: 20px;
   cursor: pointer;
+}
+
+@media screen and (max-width: $tablet-width) {
+  .back-arrow {
+    grid-column: 1 / span 2;
+    margin: 0 0 5px 0;
+    width: 30px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: $tablet-small-width) {
+  .back-arrow {
+    grid-column: 1;
+  }
 }

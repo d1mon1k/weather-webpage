@@ -35,3 +35,15 @@
 
 .rendering {
 }
+
+@media screen and (max-width: $tablet-width) {
+  .cards-container {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}
+
+@media screen and (max-width: $mobile-big-width) {
+  .cards-container {
+    grid-template-columns: repeat(1, minmax(150px, 1fr));
+  }
+}

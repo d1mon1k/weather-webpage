@@ -23,3 +23,25 @@
     box-shadow: 0 0 15px $color-add;
   }
 }
+
+@media screen and (max-width: $tablet-width) {
+  .search {
+    padding: 45px 0 0;
+  }
+
+  .search__form {
+    width: 80%;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: $mobile-big-width) {
+  .search {
+    padding: 30px 0 0;
+  }
+
+  .search__form {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
