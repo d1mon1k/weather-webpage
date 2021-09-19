@@ -13,8 +13,8 @@ const defaultCities = [
 ];
 
 //TODO разделить на url &method =====================================================
-const apiUrl = "http://api.weatherapi.com/v1/forecast.json?";
-const url = "http://api.weatherapi.com/v1/";
+const apiUrl = "https://api.weatherapi.com/v1/forecast.json?";
+const url = "https://api.weatherapi.com/v1/";
 const apiMethod = "forecast.json?";
 const apiKey = "key=5050ce131d7f4d3ab69140830211708";
 //TODO ==============================================================================
@@ -64,7 +64,7 @@ autocompleateBlock.addEventListener("mouseleave", function () {
 });
 
 search.addEventListener("input", async function (e) {
-  const url = `http://api.weatherapi.com/v1/search.json?`;
+  const url = `https://api.weatherapi.com/v1/search.json?`;
   const value = this.value;
   const data = await getWeatherJson(`&q=${value}`, url, apiKey);
 
