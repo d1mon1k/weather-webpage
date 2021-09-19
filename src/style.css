@@ -484,6 +484,7 @@ sup {
 }
 @media screen and (max-width: 570px) {
   .hours-list {
+    grid-row-start: 2;
     border-radius: 0 0 5px 5px;
   }
 }
@@ -593,7 +594,7 @@ sup {
 }
 @media screen and (max-width: 570px) {
   .weekdays-container {
-    grid-row-start: 3;
+    grid-row-start: 1;
   }
 
   .weekdays-row {
@@ -641,7 +642,8 @@ sup {
 }
 @media screen and (max-width: 570px) {
   .back-arrow {
-    grid-column: 1;
+    grid-column-start: 1;
+    grid-row-start: 3;
   }
 }
 .autocompleate {
@@ -724,8 +726,8 @@ sup {
 }
 .fixed-btn {
   position: fixed;
-  bottom: 15px;
-  right: 10px;
+  bottom: 45px;
+  right: 40px;
   width: 40px;
   height: 40px;
   background-image: url("../assets/svg/arrow-up.svg");
@@ -847,7 +849,7 @@ sup {
 @media screen and (max-width: 570px) {
   .main-content {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
   }
 
   .main-content__title {

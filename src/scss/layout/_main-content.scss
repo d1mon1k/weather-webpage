@@ -19,7 +19,7 @@
 @media screen and (max-width: $tablet-small-width) {
   .main-content {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
   }
 
   .main-content__title {

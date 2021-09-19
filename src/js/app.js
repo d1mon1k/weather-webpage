@@ -24,13 +24,13 @@ const form = document.forms.submitCity;
 const search = form.elements["search"];
 const autocompleateBlock = document.querySelector(".autocompleate");
 const mainTitle = document.querySelector("#title");
-const mainContainer = document.querySelector("#main-container");
-const citiesContainer = document.querySelector("#cities-container");
-const weekdaysContainer = document.querySelector("#weekdays-container");
-const hoursContainer = document.querySelector("#hours-container");
+const mainContainer = document.querySelector("#main-container"); //!
+// const citiesContainer = document.querySelector("#cities-container"); //!
+// const weekdaysContainer = document.querySelector("#weekdays-container"); //!
+// const hoursContainer = document.querySelector("#hours-container"); //!
 
 document.addEventListener("scroll", function () {
-  if (window.pageYOffset >= window.screen.height / 2) {
+  if (window.pageYOffset >= window.screen.height / 3) {
     fixedBtn.classList.add("fixed-btn");
   } else {
     fixedBtn.classList.remove("fixed-btn");
@@ -123,11 +123,18 @@ function selectText(line) {
 }
 
 async function renderCitiesWeather(citiesArr) {
-  weekdaysContainer.innerHTML = "";
-  hoursContainer.innerHTML = "";
+  mainContainer.innerHTML = "";
+  mainContainer.classList.remove('main-content')
+
+  const citiesContainer = document.createElement("ul");
+  citiesContainer.classList.add("cards-container");
+  mainContainer.append(citiesContainer);
+
   renderMainTitle();
-  return citiesArr.forEach((city) => {
-    return renderWeatherCard(`&q=${city}`);
+
+  return citiesArr.forEach(async (city) => {
+    const listItem = await renderWeatherCard(`&q=${city}`);
+    citiesContainer.append(listItem);
   });
 }
 
@@ -150,8 +157,7 @@ function renderMainTitle(data, dayNumber) {
 async function renderWeatherCard(path, url = apiUrl, key = apiKey) {
   const data = await getWeatherJson(path, url, key);
   const listItem = weatherCardTemplate(data);
-  citiesContainer.className = "cards-container";
-  citiesContainer.append(listItem);
+  return listItem;
 }
 
 async function getWeatherJson(path, url = apiUrl, key = apiKey) {
@@ -192,16 +198,20 @@ function renderCityOnClick(e) {
 async function renderCityPage(path, dayNumber = 0) {
   const data = await getWeatherJson(path);
   renderMainTitle(data, dayNumber);
-  citiesContainer.innerHTML = "";
-  weekdaysContainer.innerHTML = "";
-  hoursContainer.innerHTML = "";
-  renderWeekdaysSection(dayNumber, data, path);
+  mainContainer.innerHTML = "";
+  mainContainer.classList.add('main-content')
+
+  const weekdaysContainer = document.createElement("div");
+  weekdaysContainer.classList.add('weekdays-container')
+  mainContainer.append(weekdaysContainer);
+
+  renderWeekdaysSection(dayNumber, data, path, weekdaysContainer);
   renderHoursSection(dayNumber, data);
   renderBackArrow();
 }
 
-function renderWeekdaysSection(dayNumber, fullData, path) {
-  weekdaysContainer.append(weekdaysRowTemplate(dayNumber, fullData, path));
+function renderWeekdaysSection(dayNumber, fullData, path, node) {
+  node.append(weekdaysRowTemplate(dayNumber, fullData, path));
 }
 
 function weekdaysRowTemplate(dayNumber, fullData, path) {
@@ -339,6 +349,10 @@ function renderHoursSection(dayNumber, data) {
   } = data;
   const { hour: hours } = forecastday[dayNumber];
 
+  const hoursContainer = document.createElement("ul");
+  hoursContainer.classList.add("hours-list");
+  mainContainer.append(hoursContainer);
+
   for (let i = 0; i < hours.length; i += 2) {
     hoursContainer.insertAdjacentHTML("beforeend", hoursCardTemplate(hours[i]));
   }
@@ -376,8 +390,9 @@ function renderBackArrow() {
   mainContainer.append(backArrow);
 }
 
-function renderCitiesWeatherOnClick() {
-  citiesContainer.innerHTML = "";
+function renderCitiesWeatherOnClick(e) {
+  e.preventDefault();
+  mainContainer.innerHTML = "";
   const oldBackArrow = document.querySelector(".back-arrow");
   if (oldBackArrow) {
     oldBackArrow.remove();
@@ -386,8 +401,7 @@ function renderCitiesWeatherOnClick() {
 }
 
 function renderCityPageOnClick(path, dayNumber) {
-  weekdaysContainer.innerHTML = "";
-  hoursContainer.innerHTML = "";
+  mainContainer.innerHTML = "";
   renderCityPage(path, dayNumber);
 }
 

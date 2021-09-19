@@ -55,6 +55,7 @@ sup {
 
 @media screen and (max-width: $tablet-small-width) {
   .hours-list {
+    grid-row-start: 2;
     border-radius: 0 0 5px 5px;
   }
 }
