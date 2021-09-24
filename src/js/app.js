@@ -41,7 +41,7 @@ function removePreloader() {
   if (preloader) {
     setTimeout(() => {
       preloader.remove();
-    }, 500);
+    }, 2000);
   }
 }
 
