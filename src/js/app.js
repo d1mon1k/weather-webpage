@@ -24,13 +24,29 @@ const form = document.forms.submitCity;
 const search = form.elements["search"];
 const autocompleateBlock = document.querySelector(".autocompleate");
 const mainTitle = document.querySelector("#title");
-const mainContainer = document.querySelector("#main-container"); //!
-// const citiesContainer = document.querySelector("#cities-container"); //!
-// const weekdaysContainer = document.querySelector("#weekdays-container"); //!
-// const hoursContainer = document.querySelector("#hours-container"); //!
+const mainContainer = document.querySelector("#main-container");
+
+function renderPreloader() {
+  const lastPreloader = document.querySelector(".preloader-container");
+  if (!lastPreloader) {
+    const mainWrapper = document.querySelector(".main");
+    const preloader = document.createElement("div");
+    preloader.className = "preloader-container";
+    mainWrapper.prepend(preloader);
+  }
+}
+
+function removePreloader() {
+  const preloader = document.querySelector(".preloader-container");
+  if (preloader) {
+    setTimeout(() => {
+      preloader.remove();
+    }, 500);
+  }
+}
 
 document.addEventListener("scroll", function () {
-  if (window.pageYOffset >= 100) {
+  if (window.pageYOffset >= 100 && window.screen.width <= 768) {
     fixedBtn.classList.add("fixed-btn");
   } else {
     fixedBtn.classList.remove("fixed-btn");
@@ -124,7 +140,7 @@ function selectText(line) {
 
 async function renderCitiesWeather(citiesArr) {
   mainContainer.innerHTML = "";
-  mainContainer.classList.remove('main-content')
+  mainContainer.classList.remove("main-content");
 
   const citiesContainer = document.createElement("ul");
   citiesContainer.classList.add("cards-container");
@@ -132,7 +148,7 @@ async function renderCitiesWeather(citiesArr) {
 
   renderMainTitle();
 
-  return citiesArr.forEach(async (city) => {
+  citiesArr.forEach(async (city) => {
     const listItem = await renderWeatherCard(`&q=${city}`);
     citiesContainer.append(listItem);
   });
@@ -153,7 +169,6 @@ function renderMainTitle(data, dayNumber) {
     mainTitle.lastElementChild.textContent = `on ${getDate()}`;
   }
 }
-
 async function renderWeatherCard(path, url = apiUrl, key = apiKey) {
   const data = await getWeatherJson(path, url, key);
   const listItem = weatherCardTemplate(data);
@@ -161,8 +176,10 @@ async function renderWeatherCard(path, url = apiUrl, key = apiKey) {
 }
 
 async function getWeatherJson(path, url = apiUrl, key = apiKey) {
+  renderPreloader();
   const promise = await fetch(`${url}${key}${path}`);
   const data = promise.json();
+  removePreloader();
   return data;
 }
 
@@ -199,10 +216,10 @@ async function renderCityPage(path, dayNumber = 0) {
   const data = await getWeatherJson(path);
   renderMainTitle(data, dayNumber);
   mainContainer.innerHTML = "";
-  mainContainer.classList.add('main-content')
+  mainContainer.classList.add("main-content");
 
   const weekdaysContainer = document.createElement("div");
-  weekdaysContainer.classList.add('weekdays-container')
+  weekdaysContainer.classList.add("weekdays-container");
   mainContainer.append(weekdaysContainer);
 
   renderWeekdaysSection(dayNumber, data, path, weekdaysContainer);
@@ -229,7 +246,6 @@ function weekdaysRowTemplate(dayNumber, fullData, path) {
   );
   weekdaysRow.append(firstWeekdayTemplate(forecastday, dayNumber, path));
   weekdaysRow.append(secondWeekdayTemplate(forecastday, dayNumber, path));
-
   return weekdaysRow;
 }
 
@@ -368,7 +384,7 @@ function hoursCardTemplate(HourData) {
 
   return `<li class="hours-list__item">
             <time class="hours-list__time">
-              <span>${getHourFromDate(time)}</span> 
+              <span>${getHourFromDate(time)}</span>
               <sup>00</sup>
             </time>
             <div class="hours-list__image" title="${text}" style="background-image: url('${icon}')"></div>
