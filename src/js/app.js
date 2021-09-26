@@ -41,7 +41,7 @@ function removePreloader() {
   if (preloader) {
     setTimeout(() => {
       preloader.remove();
-    }, 2000);
+    }, 500);
   }
 }
 
@@ -80,7 +80,7 @@ autocompleateBlock.addEventListener("mouseleave", function () {
 });
 
 search.addEventListener("input", async function (e) {
-  const url = `https://api.weatherapi.com/v1/search.json?`;
+  const url = `https://api.weatherapi.com/v1/search.json?`; //!!!!!
   const value = this.value;
   const data = await getWeatherJson(`&q=${value}`, url, apiKey);
 
@@ -176,7 +176,9 @@ async function renderWeatherCard(path, url = apiUrl, key = apiKey) {
 }
 
 async function getWeatherJson(path, url = apiUrl, key = apiKey) {
-  renderPreloader();
+  if (url.lastIndexOf("search.json") === -1) {
+    renderPreloader();
+  }
   const promise = await fetch(`${url}${key}${path}`);
   const data = promise.json();
   removePreloader();
@@ -204,12 +206,38 @@ function weatherCardTemplate(data) {
   listItem.classList.add("card");
   listItem.dataset.city = city;
   listItem.insertAdjacentHTML("afterbegin", itemBody);
-  listItem.addEventListener("click", renderCityOnClick);
+  listItem.addEventListener("click", function (e) {
+    animationOnClick.call(listItem, e);
+    setTimeout(() => {
+      renderCityOnClick.call(listItem);
+    }, 500);
+  });
   return listItem;
 }
 
 function renderCityOnClick(e) {
   renderCityPage(`&q=${this.dataset.city}&days=3`);
+}
+
+function animationOnClick(e) {
+  const x = e.pageX,
+    y = e.pageY;
+  const buttonLeft = this.offsetLeft,
+    buttonTop = this.offsetTop;
+  const xInside = x - buttonLeft,
+    yInside = y - buttonTop;
+
+  const parentNode = this;
+  parentNode.classList.add("parent");
+  const dot = document.createElement("div");
+  dot.classList.add("co-ordinate");
+  dot.style.left = `${xInside}px`;
+  dot.style.top = `${yInside}px`;
+  parentNode.append(dot);
+
+  setTimeout(() => {
+    dot.remove();
+  }, 1000);
 }
 
 async function renderCityPage(path, dayNumber = 0) {
@@ -279,8 +307,9 @@ function currentWeatherCardTemplate(data, path) {
   const weekdayCard = document.createElement("div");
   weekdayCard.classList.add("weekday-card", "weekday-card_side");
   weekdayCard.insertAdjacentHTML("beforeend", weekdayCardBody);
-  weekdayCard.addEventListener("click", () => {
-    renderCityPageOnClick(path);
+  weekdayCard.addEventListener("click", (e) => {
+    animationOnClick.call(weekdayCard, e);
+    setTimeout(()=>{renderCityPageOnClick(path)}, 500);
   });
 
   const clock = weekdayCard.querySelector("#clock");
@@ -352,8 +381,9 @@ function secondWeekdayTemplate(forecastday, dayNumber, path) {
   const weekdayCard = document.createElement("div");
   weekdayCard.classList.add("weekday-card", "weekday-card_side");
   weekdayCard.insertAdjacentHTML("afterbegin", weekdayCardBody);
-  weekdayCard.addEventListener("click", () => {
-    renderCityPageOnClick(path, dayNumber);
+  weekdayCard.addEventListener("click", (e) => {
+    animationOnClick.call(weekdayCard, e);
+    setTimeout(() => {renderCityPageOnClick(path, dayNumber)}, 500);
   });
 
   return weekdayCard;
@@ -499,5 +529,3 @@ function getDate(_date) {
 logo.addEventListener("click", renderCitiesWeatherOnClick);
 
 renderCitiesWeather(defaultCities);
-
-// renderCityPage(`&q=London&days=3`);

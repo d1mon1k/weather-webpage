@@ -16,6 +16,7 @@
   background-color: #26a69a;
   right: 100%;
   animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  animation-delay: .7s;
 }
 
 .preloader-container::after {
@@ -26,8 +27,7 @@
   height: 100%;
   background-color: #26a69a;
   animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1)
-    infinite;
-  animation-delay: 1.15s;
+  infinite;
 }
 
 @keyframes indeterminate {

@@ -1,0 +1,23 @@
+.parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.co-ordinate {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: increase .4s linear;
+}
+
+@keyframes increase {
+  from {
+    transform: scale(1);
+    background-color: rgba(255, 255, 255, 0.247);
+  }
+  to {
+    transform: scale(110);
+  }
+}

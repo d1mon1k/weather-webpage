@@ -390,6 +390,7 @@ a {
   color: #fff;
   background-color: #363c75;
   cursor: pointer;
+  user-select: none;
 }
 .card:hover {
   box-shadow: 0 0 15px #5179fa;
@@ -754,6 +755,7 @@ sup {
   background-color: #26a69a;
   right: 100%;
   animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  animation-delay: 0.7s;
 }
 
 .preloader-container::after {
@@ -764,7 +766,6 @@ sup {
   height: 100%;
   background-color: #26a69a;
   animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-  animation-delay: 1.15s;
 }
 
 @keyframes indeterminate {
@@ -822,6 +823,7 @@ sup {
   line-height: 20px;
   font-style: normal;
   color: #fff;
+  user-select: none;
 }
 
 .logo__img {
@@ -913,6 +915,29 @@ sup {
 
   .main-content__title {
     grid-column-start: 1;
+  }
+}
+.parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.co-ordinate {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: increase 0.4s linear;
+}
+
+@keyframes increase {
+  from {
+    transform: scale(1);
+    background-color: rgba(255, 255, 255, 0.247);
+  }
+  to {
+    transform: scale(110);
   }
 }
 
