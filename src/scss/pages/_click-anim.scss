@@ -5,12 +5,11 @@
 
 .co-ordinate {
   position: absolute;
-  // transform: translate(-50%, -50%) scale(0);
   width: 100px;
   height: 100px;
   background-color: #fff;
   border-radius: 50%;
-  animation: increase 3.5s ease-out forwards;
+  animation: increase .5s ease-out forwards;
 }
 
 @keyframes increase {
