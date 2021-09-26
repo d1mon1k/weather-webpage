@@ -927,17 +927,17 @@ sup {
 
 .co-ordinate {
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   width: 100px;
   height: 100px;
   background-color: #fff;
   border-radius: 50%;
-  animation: increase 0.5s ease-out forwards;
+  animation: increase 3.5s ease-out forwards;
 }
 
 @keyframes increase {
   to {
-    transform: scale(5);
+    transform: translate(-50%, -50%) scale(5);
     opacity: 0;
   }
 }

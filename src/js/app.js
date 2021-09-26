@@ -208,9 +208,9 @@ function weatherCardTemplate(data) {
   listItem.insertAdjacentHTML("afterbegin", itemBody);
   listItem.addEventListener("click", function (e) {
     animationOnClick.call(listItem, e);
-    setTimeout(() => {
-      renderCityOnClick.call(listItem);
-    }, 500);
+    // setTimeout(() => {
+    //   renderCityOnClick.call(listItem);
+    // }, 500);
   });
   return listItem;
 }
@@ -237,7 +237,7 @@ function animationOnClick(e) {
 
   setTimeout(() => {
     dot.remove();
-  }, 1000);
+  }, 10000);
 }
 
 async function renderCityPage(path, dayNumber = 0) {
