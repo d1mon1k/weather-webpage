@@ -233,11 +233,12 @@ function animationOnClick(e) {
   dot.classList.add("co-ordinate");
   dot.style.left = `${xInside}px`;
   dot.style.top = `${yInside}px`;
+  dot.style.transform = 'translate(-50%, -50%) scale(0)'
   parentNode.append(dot);
 
-  setTimeout(() => {
-    dot.remove();
-  }, 10000);
+  // setTimeout(() => {
+  //   dot.remove();
+  // }, 10000);
 }
 
 async function renderCityPage(path, dayNumber = 0) {

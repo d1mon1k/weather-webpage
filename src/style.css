@@ -927,7 +927,6 @@ sup {
 
 .co-ordinate {
   position: absolute;
-  transform: translate(-50%, -50%) scale(0);
   width: 100px;
   height: 100px;
   background-color: #fff;
@@ -937,7 +936,7 @@ sup {
 
 @keyframes increase {
   to {
-    transform: translate(-50%, -50%) scale(5);
+    transform: translate(-50%, -50%) scale(3);
     opacity: 0;
   }
 }
