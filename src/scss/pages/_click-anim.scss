@@ -6,18 +6,16 @@
 .co-ordinate {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 5px;
-  height: 5px;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
   border-radius: 50%;
-  animation: increase .4s linear;
+  animation: increase 0.5s ease-out forwards;
 }
 
 @keyframes increase {
-  from {
-    transform: scale(1);
-    background-color: rgba(255, 255, 255, 0.247);
-  }
   to {
-    transform: scale(110);
+    transform: scale(5);
+    opacity: 0;
   }
 }

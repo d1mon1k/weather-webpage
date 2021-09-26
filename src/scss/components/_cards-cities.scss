@@ -18,6 +18,9 @@
     box-shadow: 0 0 15px $color-add;
     outline: 1px solid $color-add;
   }
+  &:focus {
+    outline: none;
+  }
   user-select: none;
 }
 

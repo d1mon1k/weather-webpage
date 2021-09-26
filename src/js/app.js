@@ -309,7 +309,9 @@ function currentWeatherCardTemplate(data, path) {
   weekdayCard.insertAdjacentHTML("beforeend", weekdayCardBody);
   weekdayCard.addEventListener("click", (e) => {
     animationOnClick.call(weekdayCard, e);
-    setTimeout(()=>{renderCityPageOnClick(path)}, 500);
+    setTimeout(() => {
+      renderCityPageOnClick(path);
+    }, 500);
   });
 
   const clock = weekdayCard.querySelector("#clock");
@@ -383,7 +385,9 @@ function secondWeekdayTemplate(forecastday, dayNumber, path) {
   weekdayCard.insertAdjacentHTML("afterbegin", weekdayCardBody);
   weekdayCard.addEventListener("click", (e) => {
     animationOnClick.call(weekdayCard, e);
-    setTimeout(() => {renderCityPageOnClick(path, dayNumber)}, 500);
+    setTimeout(() => {
+      renderCityPageOnClick(path, dayNumber);
+    }, 500);
   });
 
   return weekdayCard;

@@ -396,6 +396,9 @@ a {
   box-shadow: 0 0 15px #5179fa;
   outline: 1px solid #5179fa;
 }
+.card:focus {
+  outline: none;
+}
 
 .card__title {
   font-size: 20px;
@@ -925,19 +928,17 @@ sup {
 .co-ordinate {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 5px;
-  height: 5px;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
   border-radius: 50%;
-  animation: increase 0.4s linear;
+  animation: increase 0.5s ease-out forwards;
 }
 
 @keyframes increase {
-  from {
-    transform: scale(1);
-    background-color: rgba(255, 255, 255, 0.247);
-  }
   to {
-    transform: scale(110);
+    transform: scale(5);
+    opacity: 0;
   }
 }
 
