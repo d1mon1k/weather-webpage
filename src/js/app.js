@@ -25,6 +25,7 @@ const search = form.elements["search"];
 const autocompleateBlock = document.querySelector(".autocompleate");
 const mainTitle = document.querySelector("#title");
 const mainContainer = document.querySelector("#main-container");
+const menuBurger = document.querySelector(".menu-burger__btn");
 
 function renderPreloader() {
   const lastPreloader = document.querySelector(".preloader-container");
@@ -45,12 +46,29 @@ function removePreloader() {
   }
 }
 
-document.addEventListener("scroll", function () {
-  if (window.pageYOffset >= 100 && window.screen.width <= 768) {
-    fixedBtn.classList.add("fixed-btn");
-  } else {
-    fixedBtn.classList.remove("fixed-btn");
+function renderScrollBtn() {
+  let prevScrollValue = 0;
+  function chekScroll(currScrollValue) {
+    if (currScrollValue < prevScrollValue) {
+      fixedBtn.classList.remove("fixed-btn");
+    }
+    prevScrollValue = currScrollValue;
   }
+  document.addEventListener("scroll", function addBtnOnScroll() {
+    if (window.pageYOffset >= 100 && window.screen.width <= 768) {
+      fixedBtn.classList.add("fixed-btn");
+      chekScroll(window.pageYOffset);
+    } else {
+      fixedBtn.classList.remove("fixed-btn");
+    }
+  });
+}
+
+menuBurger.addEventListener("click", function () {
+  const headerMenu = document.querySelector(".header__menu");
+  this.classList.toggle("menu-burger__btn_active");
+  headerMenu.classList.toggle("active");
+  document.body.classList.toggle("overflow-hidden");
 });
 
 form.addEventListener("submit", function (e) {
@@ -134,7 +152,7 @@ function selectText(line) {
   const regex = new RegExp(`${search.value}`, "i");
 
   return line.replace(regex, (searchStr) => {
-    return `<b style="color: pink;">${searchStr}</b>`;
+    return `<b style="color: #5179fa;">${searchStr}</b>`;
   });
 }
 
@@ -534,3 +552,4 @@ function getDate(_date) {
 logo.addEventListener("click", renderCitiesWeatherOnClick);
 
 renderCitiesWeather(defaultCities);
+renderScrollBtn();

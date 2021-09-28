@@ -352,7 +352,7 @@ body {
   font-weight: 400;
   line-height: 22px;
   font-style: normal;
-  background-color: #2e3566;
+  background-color: #181A31;
 }
 
 time {
@@ -388,7 +388,7 @@ a {
   padding: 15px;
   border-radius: 5px;
   color: #fff;
-  background-color: #363c75;
+  background-color: #1F243A;
   cursor: pointer;
   user-select: none;
 }
@@ -431,7 +431,7 @@ a {
   display: flex;
   width: 100%;
   border-radius: 5px;
-  background-color: #363c75;
+  background-color: #1F243A;
 }
 
 .hours-list__item {
@@ -441,8 +441,8 @@ a {
   align-items: center;
   flex-grow: 1;
   min-height: 200px;
-  border-left: 1px solid #2e35667e;
-  border-right: 1px solid #2e35667e;
+  border-left: 1px solid #2e356650;
+  border-right: 1px solid #2e356650;
   color: #fff;
 }
 
@@ -482,8 +482,8 @@ sup {
   .hours-list__item {
     flex-direction: row;
     min-height: 0px;
-    border-top: 1px solid #2e35667e;
-    border-bottom: 1px solid #2e35667e;
+    border-top: 1px solid #2e356650;
+    border-bottom: 1px solid #2e356650;
   }
 }
 @media screen and (max-width: 570px) {
@@ -507,7 +507,7 @@ sup {
   width: 100%;
   border-radius: 5px 5px 0 0;
   color: #fff;
-  background-color: #363c75;
+  background-color: #1F243A;
 }
 .weekday-card_middle {
   margin: 0 13px;
@@ -549,7 +549,7 @@ sup {
   font-weight: normal;
   line-height: 14px;
   font-style: normal;
-  background-color: #4a5190;
+  background-color: #2C2E47;
 }
 
 .weekday-card__temp {
@@ -662,7 +662,7 @@ sup {
   line-height: 15px;
   font-style: normal;
   color: #fff;
-  background-color: #4a5190;
+  background-color: #2C2E47;
   box-shadow: 1px 2px 5px #000;
 }
 
@@ -671,7 +671,7 @@ sup {
   cursor: pointer;
 }
 .autocompleate__item:hover {
-  color: #4a5190;
+  color: #2C2E47;
   font-weight: 600;
   background-color: #fff;
 }
@@ -698,7 +698,7 @@ sup {
   border-radius: 5px;
   color: #fff;
   font-size: 18px;
-  background-color: #4a5190;
+  background-color: #2C2E47;
 }
 .search__input::placeholder {
   color: #eeeeeec7;
@@ -745,7 +745,7 @@ sup {
   top: 0;
   width: 100%;
   height: 5px;
-  background-color: #acece6;
+  background-color: #274297;
   overflow: hidden;
 }
 
@@ -755,7 +755,7 @@ sup {
   top: 0;
   width: 45%;
   height: 100%;
-  background-color: #26a69a;
+  background-color: #5179fa;
   right: 100%;
   animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
   animation-delay: 0.7s;
@@ -767,7 +767,7 @@ sup {
   top: 0;
   width: 85%;
   height: 100%;
-  background-color: #26a69a;
+  background-color: #5179fa;
   animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
 }
 
@@ -799,6 +799,43 @@ sup {
     right: -8%;
   }
 }
+.menu-burger {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-burger__btn {
+  position: relative;
+  z-index: 10;
+}
+.menu-burger__btn div:nth-child(1n) {
+  margin: 0 0 6px 0;
+  width: 25px;
+  height: 3px;
+  background-color: #5179fa;
+  transition: all 0.5s linear;
+}
+.menu-burger__btn div:last-child {
+  margin: 0;
+}
+
+.menu-burger__btn_active div:nth-child(1n) {
+  margin: 0;
+}
+.menu-burger__btn_active div:nth-child(1) {
+  transform: rotate(-45deg) translate(-4.2px, 0px);
+}
+.menu-burger__btn_active div:nth-child(2) {
+  transform: scale(0);
+}
+.menu-burger__btn_active div:nth-child(3) {
+  transform: rotate(45deg) translate(-4.2px, 0px);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .wrapper {
   margin: 0 auto;
   padding: 0 15px;
@@ -807,7 +844,7 @@ sup {
 
 .header {
   padding: 15px 0;
-  background-color: #4a5190;
+  background-color: #2C2E47;
 }
 
 .header__wrapper {
@@ -818,6 +855,8 @@ sup {
 }
 
 .logo {
+  position: relative;
+  z-index: 10;
   display: inline-flex;
   align-items: center;
   min-width: 180px;
@@ -866,20 +905,32 @@ sup {
   }
 
   .header__menu {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(200%);
+    transition: transform 0.5s linear;
+    background-color: #1F243A;
+  }
+
+  .header__link {
+    display: inline-block;
+    margin: 20px 0;
+    font-size: 25px;
   }
 
   .header__menu-burger {
-    cursor: pointer;
+    display: block;
   }
-  .header__menu-burger div:nth-child(1n) {
-    margin: 0 0 6px 0;
-    width: 25px;
-    height: 3px;
-    background-color: #5179fa;
-  }
-  .header__menu-burger div:last-child {
-    margin: 0;
+
+  .active {
+    transform: translate(0);
   }
 }
 .main {

@@ -1,0 +1,38 @@
+.menu-burger {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-burger__btn {
+  position: relative;
+  z-index: 10;
+  & div:nth-child(1n) {
+    margin: 0 0 6px 0;
+    width: 25px;
+    height: 3px;
+    background-color: $color-add;
+    transition: all 0.5s linear;
+  }
+  & div:last-child {
+    margin: 0;
+  }
+}
+
+.menu-burger__btn_active {
+  & div:nth-child(1n) {
+    margin: 0;
+  }
+  & div:nth-child(1) {
+    transform: rotate(-45deg) translate(-4.2px, 0px);
+  }
+  & div:nth-child(2) {
+    transform: scale(0);
+  }
+  & div:nth-child(3) {
+    transform: rotate(45deg) translate(-4.2px, 0px);
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

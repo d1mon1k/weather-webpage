@@ -3,7 +3,8 @@
   top: 0;
   width: 100%;
   height: 5px;
-  background-color: #acece6;
+  background-color: #274297;
+  // background-color: #acece6;
   overflow: hidden;
 }
 
@@ -13,7 +14,8 @@
   top: 0;
   width: 45%;
   height: 100%;
-  background-color: #26a69a;
+  // background-color: #26a69a;
+  background-color: $color-add;
   right: 100%;
   animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
   animation-delay: .7s;
@@ -25,7 +27,8 @@
   top: 0;
   width: 85%;
   height: 100%;
-  background-color: #26a69a;
+  // background-color: #26a69a;
+  background-color: $color-add;
   animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1)
   infinite;
 }
