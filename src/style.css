@@ -845,6 +845,7 @@ sup {
 .header {
   padding: 15px 0;
   background-color: #2C2E47;
+  scroll-behavior: smooth;
 }
 
 .header__wrapper {

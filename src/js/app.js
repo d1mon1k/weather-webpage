@@ -47,9 +47,13 @@ function removePreloader() {
 }
 
 function renderScrollBtn() {
+  addClickEventToBtn();
   let prevScrollValue = 0;
   function chekScroll(currScrollValue) {
-    if (currScrollValue < prevScrollValue) {
+    if (
+      currScrollValue < prevScrollValue &&
+      window.pageYOffset < window.screen.height - 15
+    ) {
       fixedBtn.classList.remove("fixed-btn");
     }
     prevScrollValue = currScrollValue;
@@ -61,6 +65,23 @@ function renderScrollBtn() {
     } else {
       fixedBtn.classList.remove("fixed-btn");
     }
+  });
+}
+
+function addClickEventToBtn() {
+  let timer;
+  fixedBtn.addEventListener("click", function smoothScrollUp() {
+    let top = Math.max(
+      document.body.scrollTop,
+      document.documentElement.scrollTop
+    );
+    if (top > 0) {
+      window.scrollBy(0, -100);
+      timer = setTimeout(smoothScrollUp, 20);
+    } else {
+      clearTimeout(timer);
+    }
+    return false;
   });
 }
 
